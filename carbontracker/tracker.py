@@ -580,7 +580,7 @@ class CarbonTrackerManual(CarbonTracker):
             with open(f'{save_dir}.json', 'w') as f:
                 json.dump(save_dict, f, indent=4)
         else:
-            return energy, _co2eq
+            return energy, _co2eq, time
 
     def epoch_end(self, save_dir=''):
         if self.deleted:

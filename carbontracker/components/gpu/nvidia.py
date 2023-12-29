@@ -20,8 +20,13 @@ class NvidiaGPU(Handler):
         Note:
             Requires NVML to be initialized.
         """
-        names = [pynvml.nvmlDeviceGetName(handle) for handle in self._handles]
-        devices = [name.decode("utf-8") for name in names]
+        names = [pynvml.nvmlDeviceGetName(handle) for handle in self._handles]        
+        devices = []
+        for name in names:
+            if type(name) == str:
+                devices.append(name)
+            else:
+                devices.append(name.decode("utf-8"))
         return devices
 
     def available(self):
