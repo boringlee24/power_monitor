@@ -10,10 +10,11 @@ for i in (range(20)):
     tracker.epoch_start()
     print(f"Prompt {i}")
     time.sleep(0.5)    
-    energy, co2 = tracker.epoch_end('')
+    energy, co2, duration = tracker.epoch_end('')
     info[i] = {
         "Energy": energy,
-        "CO2": co2
+        "CO2": co2,
+        "Duration": duration,
     }
 print(info)
 

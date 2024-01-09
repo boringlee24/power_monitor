@@ -470,6 +470,14 @@ class CarbonIntensityThreadManual(CarbonIntensityThread):
         self.ci_manual = ci_manual        
         super().__init__(logger, stop_event, update_interval)
 
+    def _fetch_carbon_intensity(self):
+        # ci = intensity.carbon_intensity(self.logger)
+        # if ci.success and isinstance(
+        #         ci.carbon_intensity,
+        #     (int, float)) and not np.isnan(ci.carbon_intensity):
+        #     self.carbon_intensities.append(ci)
+        pass
+
     def predict_carbon_intensity(self, pred_time_dur):
         ci = intensity.carbon_intensity(self.logger, time_dur=pred_time_dur)
         ci.carbon_intensity = self.ci_manual
