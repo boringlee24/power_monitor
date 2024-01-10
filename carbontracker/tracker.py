@@ -176,6 +176,8 @@ class CarbonTrackerThread(Thread):
             f"Duration: {loggerutil.convert_to_timestring(duration, True)}")
         for comp in self.components:
             if comp.power_usages and comp.power_usages[-1]: # this includes all power of all epochs
+                # remove empty lists from power_usages[-1]
+                comp.power_usages[-1] = [x for x in comp.power_usages[-1] if len(x)>0]
                 power_avg = np.mean(comp.power_usages[-1], axis=0)
                 # If np.mean is calculated during a measurement, it will get an
                 # empty list and return nan, if this is the case we take the
